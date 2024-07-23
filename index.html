@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black">
+    <div class="flex flex-wrap  justify-center text-center items-center  md:justify-start md:items-start">
+        <div class="w-auto xl:ms-40">
+            <h1 class="font-sans text-white  md:text-5xl p-5 md:me-20 mt-2 font-semibold inline-block text-3xl">BMI FIT
+                CHECK</h1>
+            <div
+                class="flex flex-wrap justify-items-stretch md:ps-20 ps-4 md:w-[550px] justify-center  md:justify-start w-auto me-3 md:mt-4">
+                <button type="button" class="h-10 w-32 m-[10px] items-center 
+            bg-gradient-to-r from-green-500  to-yellow-300 p-[1.7px]
+             text-white" id="male">
+                    <div class="flex h-full w-auto items-center  text-2xl font-sans  bg-gray-900 gap-1">
+                        <img src="https://i.ibb.co/Y8PpGVD/male.png" alt="" class="w-[37px] ps-3">
+                        <h1 id="selectvaluemale" class="text-xl">Male</h1>
+                    </div>
+                </button>
+                <button type="button" class="h-10 w-32 m-[10px] items-center  
+            bg-gradient-to-r from-green-500  to-yellow-300 p-[1.7px]
+             text-white" id="female">
+                    <div class="flex h-full w-auto items-center  text-2xl font-sans  bg-gray-900 gap-1">
+                        <img src="https://i.ibb.co/brYY3qw/female.png" alt="" class="w-[37px] ps-3">
+                        <h1 id="selectvaluefemale" class="text-xl">Female</h1>
+                    </div>
+                </button>
+            </div>
+            <!-- genter Select Ends -->
+            <!-- height1 -->
+            <div class="md:ps-24 ps-7 md: mt-10 flex felx-wrap space-x-2  justify-center md:justify-start w-auto">
+                <h1 class="font-sans text-white text-xl font-semibold">Height</h1>
+                <button type="button" class="h-6 w-8  items-center  text-sm text-black rounded
+            bg-gradient-to-r from-green-500  to-yellow-300 p-[1.7px] font-bold">Cms
+                </button>
+                <h1 class="text-white text-xl font-sans font-semibold md:ps-[200px] ps-[160px]" id="heightdisplay"></h1>
+            </div>
+            <div class="md:ps-24 ps-7 mt-8 flex felx-wrap space-x-2  justify-center md:justify-start w-auto">
+                <input type="range" class="md:w-[400px] w-[350px] cursor-pointer appearance-none   rounded-2xl
+              accent-white
+              [&::-webkit-slider-thumb]:w-6
+              [&::-webkit-slider-thumb]:h-6
+              [&::-webkit-slider-thumb]:-mt-[5px]
+              [&::-webkit-slider-thumb]:shadow-[0_0_0_5px_#10B981]
+              [&::-webkit-slider-thumb]:rounded-full
+              [&::-webkit-slider-thumb]:dark:bg-neutral-700
+              [&::-moz-range-thumb]:w-5
+              [&::-moz-range-thumb]:h-2.5
+              [&::-moz-range-thumb]:appearance-none
+              [&::-moz-range-thumb]:bg-white
+              [&::-moz-range-thumb]:border-4
+              [&::-moz-range-thumb]:border-green-600
+              [&::-moz-range-thumb]:rounded-full
+              [&::-webkit-slider-runnable-track]:h-2
+              [&::-webkit-slider-runnable-track]:  bg-gradient-to-r from-green-500  to-yellow-300
+              [&::-webkit-slider-runnable-track]:rounded-3xl
+              [&::-moz-range-track]:rounded-full" id="height" aria-orientation="horizontal" min="25" max="300">
+            </div>
+            <div class="flex flex-wrap space-x-7 md:ps-24 ps-2 mt-5  justify-center md:justify-start w-auto">
+                <span class="md:bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-6">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="md:bg-white h-4">|</span>
+            </div>
+            <div class="md:ps-24 ps-7 md: mt-10 flex felx-wrap space-x-2  justify-center md:justify-start w-auto">
+                <h1 class="font-sans text-white text-xl font-semibold">Weight</h1>
+                <button type="button" class="h-6 w-8  items-center  text-sm text-black rounded
+            bg-gradient-to-r from-green-500  to-yellow-300 p-[1.7px] font-bold">KG
+                </button>
+                <h1 class="text-white text-xl font-sans font-semibold md:ps-[200px] ps-[160px]" id="weightdisplay"></h1>
+            </div>
+
+            <div class="md:ps-24 ps-7 mt-7 flex felx-wrap space-x-2  justify-center md:justify-start w-auto">
+                <input type="range" class="md:w-[400px] w-[350px] cursor-pointer appearance-none   rounded-2xl
+              accent-white
+              [&::-webkit-slider-thumb]:w-6
+              [&::-webkit-slider-thumb]:h-6
+              [&::-webkit-slider-thumb]:-mt-[5px]
+              [&::-webkit-slider-thumb]:shadow-[0_0_0_5px_#10B981]
+              [&::-webkit-slider-thumb]:rounded-full
+              [&::-webkit-slider-thumb]:dark:bg-neutral-700
+              [&::-moz-range-thumb]:w-5
+              [&::-moz-range-thumb]:h-2.5
+              [&::-moz-range-thumb]:appearance-none
+              [&::-moz-range-thumb]:bg-white
+              [&::-moz-range-thumb]:border-4
+              [&::-moz-range-thumb]:border-green-600
+              [&::-moz-range-thumb]:rounded-full
+              [&::-webkit-slider-runnable-track]:h-2
+              [&::-webkit-slider-runnable-track]:  bg-gradient-to-r from-green-500  to-yellow-300
+              [&::-webkit-slider-runnable-track]:rounded-3xl
+              [&::-moz-range-track]:rounded-full" id="weight" aria-orientation="horizontal" min="10" max="600">
+            </div>
+            <div class="flex flex-wrap space-x-7 md:ps-24 ps-2 mt-5  justify-center md:justify-start w-auto">
+                <span class="md:bg-white h-3">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-6">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="bg-white h-4">|</span>
+                <span class="md:bg-white h-3">|</span>
+            </div>
+            <div class="md:ps-24 ps-7 mt-6 md:me-80">
+                <button type="button" class="h-12 w-40  items-center   text-slate-950 rounded text-lg font-sans
+            bg-gradient-to-r from-green-500  to-yellow-200 p-[1.7px] font-semibold" onclick="Bmicalculate()"
+                    id="bmical">Calculate
+                    BMI
+                </button>
+            </div>
+        </div>
+        <div class="md:mt-24 w-auto  flex flex-wrap md:space-x-3">
+            <img src="https://images.pexels.com/photos/2261482/pexels-photo-2261482.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                alt="" class="md:rounded-2xl w-[500px] mt-16">
+        </div>
+    </div>
+    <div class="md:w-full bg-slate-50 mt-9 p-5 md:ps-24  flex flex-wrap w-auto  h-auto">
+        <div class="flex flex-col  md:flex-row ">
+            <div class="flex flex-col">
+                <h1 class="text-3xl font-sans">Your BMI Scroe</h1>
+                <h1 class="text-6xl font-sans font-semibold mt-1" id="bmiscroe"></h1>
+                <h1 class="text-2xl font-semibold text-red-400" id="defaultshow">Selct Your Weight & Height</h1>
+            </div>
+            <img src="https://i.postimg.cc/d0tTDD65/curly-bracket-1.png" alt=""
+                class=" hidden md:w-[160px] md:h-[160px] md:block ">
+            <div class="mt-10 flex flex-col flex-wrap space-y-6 md:mt-3  md:space-y-2">
+                <h1 class="text-4xl font-semibold text-blue-500" id="defultcateogry">BMI CHECK</h1>
+                <h1 class="text-[17px] font-semibold" id="description">
+                    Checking your Body Mass Index (BMI) offers several significant benefits.it serves as a
+                    basic indicator of whether your weight falls within a healthy range, which can help identify if you
+                    are underweight, at a normal weight, overweight, or obese.
+                </h1>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
