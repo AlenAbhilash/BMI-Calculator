@@ -14,12 +14,17 @@ heightdisplay.innerHTML = `${defaultHeight} Cms`;
 weight.value = defaultWeight;
 height.value = defaultHeight;
 
+let isMaleSelected = false;
+let isFemaleSelected = false;
+
 female.addEventListener('click', () => {
+    isFemaleSelected = true;
     selectvaluefemale.innerHTML = 'Selected';
     selectvaluemale.innerHTML = 'Male';
 });
 
 male.addEventListener('click', () => {
+    isMaleSelected = true;
     selectvaluemale.innerHTML = 'Selected';
     selectvaluefemale.innerHTML = 'Female';
 });
@@ -32,9 +37,28 @@ height.addEventListener('input', () => {
     heightdisplay.innerHTML = `${height.value} Cms`;
 });
 
+function speak(text) {
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utterance);
+    } else {
+        console.log('Speech synthesis not supported');
+    }
+}
+
 function Bmicalculate() {
-    let weightValue = parseFloat(weight.value);
-    let heightValue = parseFloat(height.value);
+    console.log('Bmicalculate function called');
+    if (!isMaleSelected && !isFemaleSelected) {
+        alert('Please select either Male or Female');
+        return;
+    }
+    if (age.value < 10) {
+        alert('Please enter an age greater than 10');
+        return;
+    }
+    let weightValue = weight.value;
+    let heightValue = height.value;
     let mheight = heightValue / 100;
     let bmi = weightValue / (mheight * mheight);
     bmiscroe.innerHTML = `${bmi.toFixed(2)}`;
@@ -43,24 +67,34 @@ function Bmicalculate() {
     document.getElementById('defultcateogry').innerHTML = '';
     document.getElementById('description').innerHTML = '';
 
+    let category = '';
+    let description = '';
+
     if (finalscore < 18.5) {
-        document.getElementById('defultcateogry').innerHTML = 'Under Weight';
+        category = 'Under Weight';
         defultcateogry.style.color = 'blue';
-        document.getElementById('description').innerHTML = 'Focus on gradual weight gain through a combination of diet changes, increased exercise, and professional support.';
+        description = 'Focus on gradual weight gain through a combination of diet changes, increased exercise, and professional support.';
     } else if (finalscore >= 18.5 && bmi < 24.9) {
-        document.getElementById('defultcateogry').innerHTML = 'Normal Weight';
+        category = 'Normal Weight';
         defultcateogry.style.color = 'green';
-        document.getElementById('description').innerHTML = 'Maintain a balanced diet and regular exercise to keep your weight in a healthy range.';
+        description = 'Maintain a balanced diet and regular exercise to keep your weight in a healthy range.';
     } else if (finalscore >= 25 && bmi < 29.9) {
-        document.getElementById('defultcateogry').innerHTML = 'Over Weight';
+        category = 'Over Weight';
         defultcateogry.style.color = 'orange';
-        document.getElementById('description').innerHTML = 'Focus on gradual weight loss through a combination of diet changes, increased exercise, and professional support.';
+        description = 'Focus on gradual weight loss through a combination of diet changes, increased exercise, and professional support.';
     } else {
-        document.getElementById('defultcateogry').innerHTML = 'Obesity';
+        category = 'Obesity';
         defultcateogry.style.color = 'red';
-        document.getElementById('description').innerHTML = 'Consult a healthcare provider for a personalized plan to manage your weight and health.';
+        description = 'Consult a healthcare provider for a personalized plan to manage your weight and health.';
     }
+
+    document.getElementById('defultcateogry').innerHTML = category;
+    document.getElementById('description').innerHTML = description;
+    speak(`Your BMI score is ${finalscore}. You are categorized as ${category}. ${description}`);
 }
+
+
+
 
 bmical.addEventListener('click', () => {
     Bmicalculate();
